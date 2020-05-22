@@ -8,6 +8,7 @@ import android.os.Bundle;
 import java.util.ArrayList;
 import java.util.List;
 
+import kr.co.yhw.listview01_20200522.adapters.StudentAdapter;
 import kr.co.yhw.listview01_20200522.databinding.ActivityMainBinding;
 import kr.co.yhw.listview01_20200522.datas.Student;
 
@@ -16,6 +17,7 @@ public class MainActivity extends BaseActivity {
     ActivityMainBinding binding;
 
     List<Student> ourClassStudentList = new ArrayList<>();
+    StudentAdapter mStudentAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,9 @@ public class MainActivity extends BaseActivity {
     @Override
     public void setValues() {
         addStudents();
+
+        mStudentAdapter = new StudentAdapter(mContext, R.layout.student_list_item, ourClassStudentList);
+        binding.studentListView.setAdapter(mStudentAdapter);
     }
 
     void addStudents(){
